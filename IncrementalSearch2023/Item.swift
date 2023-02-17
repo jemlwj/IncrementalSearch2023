@@ -8,6 +8,14 @@
 
 import UIKit
 
+struct RepositoryModel: Codable {
+    var items: [Item]
+    
+    private enum CodingKeys: String, CodingKey {
+        case items
+    }
+}
+
 struct Item: Codable {
     var identifier: Int
     var full_name: String
