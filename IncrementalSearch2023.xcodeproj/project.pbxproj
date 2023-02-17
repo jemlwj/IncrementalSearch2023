@@ -15,6 +15,7 @@
 		B9F6503C299F0EB500AD9FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F6503A299F0EB500AD9FE5 /* LaunchScreen.storyboard */; };
 		B9F65047299F0EB500AD9FE5 /* IncrementalSearch2023Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F65046299F0EB500AD9FE5 /* IncrementalSearch2023Tests.swift */; };
 		B9F65052299F22EA00AD9FE5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F65051299F22EA00AD9FE5 /* Item.swift */; };
+		B9F6505B29A01FC700AD9FE5 /* ItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6505A29A01FC700AD9FE5 /* ItemDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		B9F65046299F0EB500AD9FE5 /* IncrementalSearch2023Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementalSearch2023Tests.swift; sourceTree = "<group>"; };
 		B9F65048299F0EB500AD9FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9F65051299F22EA00AD9FE5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B9F6505A29A01FC700AD9FE5 /* ItemDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				B9F65031299F0EB300AD9FE5 /* SceneDelegate.swift */,
 				B9F65033299F0EB300AD9FE5 /* ContentView.swift */,
 				B9F65051299F22EA00AD9FE5 /* Item.swift */,
+				B9F6505A29A01FC700AD9FE5 /* ItemDataSource.swift */,
 				B9F65035299F0EB500AD9FE5 /* Assets.xcassets */,
 				B9F6503A299F0EB500AD9FE5 /* LaunchScreen.storyboard */,
 				B9F6503D299F0EB500AD9FE5 /* Info.plist */,
@@ -215,6 +218,7 @@
 				B9F65030299F0EB300AD9FE5 /* AppDelegate.swift in Sources */,
 				B9F65032299F0EB300AD9FE5 /* SceneDelegate.swift in Sources */,
 				B9F65034299F0EB300AD9FE5 /* ContentView.swift in Sources */,
+				B9F6505B29A01FC700AD9FE5 /* ItemDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
