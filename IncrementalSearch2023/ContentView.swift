@@ -10,7 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        
+        List(array, id: \.identifier) { item in
+            VStack(alignment: .leading, spacing: 5) {
+                Text(item.full_name)
+                Text(item.html_url)
+            }
+        }
     }
 }
 
