@@ -19,7 +19,7 @@ class ItemTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testItem() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let testItem = Item(identifier: 0, full_name: "hello world", html_url: "www.google.com")
