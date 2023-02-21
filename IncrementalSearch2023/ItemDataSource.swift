@@ -76,7 +76,8 @@ class ItemDataSource: NSObject {
                                 failure("The Internet connection appears to be offline.")
                                 break
                             default:
-                                failure("Unknown")
+                                //Handle all other error here
+                                failure("Unknown Error encountered")
                                 break
                         }
                         break
