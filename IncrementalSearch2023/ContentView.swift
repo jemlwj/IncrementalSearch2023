@@ -53,6 +53,10 @@ struct ContentView: View {
                     
                     //run the API and retrieve the first page
                     self.cancellable = self.itemDataSource.loadList(query: self.query, completion: { items in
+                        //empty array and reset page index to 0 to start from the top
+                        self.page = 0
+                        self.array.removeAll()
+                        
                         self.array.append(contentsOf: items)
                     }, failure: { message in
                         self.errorMsg = message
