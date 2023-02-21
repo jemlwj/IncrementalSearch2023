@@ -44,9 +44,12 @@ struct ContentView: View {
                 onCommit: {
                     //When return is pressed on the keyboard, run this block
                     
-                    //empty array and reset page index to 0 to start from the top
-                    self.page = 0
-                    self.array.removeAll()
+                    if self.query.isEmpty {
+                        //If query is empty, ask for it
+                        self.errorMsg = "Please enter your search query"
+                        self.isShowThrottleAlert = true
+                        return
+                    }
                     
                     //run the API and retrieve the first page
                     self.cancellable = self.itemDataSource.loadList(query: self.query, completion: { items in
