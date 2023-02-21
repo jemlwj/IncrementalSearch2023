@@ -2,9 +2,12 @@
 #### by Jeremy Lua
 This project accesses GitHub's repository search API and return the repository name and URL in a List.
 
-This project is developed in SwiftUI and uses Combine for the API request.
+Developed in Swift and SwiftUI and uses Combine for the API request.
 Unit Test of the model and the data source class is also implemented.
 
+## Development Environment
+* macOS Catalina 10.15.1
+* Xcode 11.2.1
 
 ## How to use
 
@@ -21,3 +24,10 @@ This will be caught as an error within API Request call.
 
 However, the app will handle this by not allowing the web request to be called within a 5-second window.
 Any additional API requests within the 5-second window will be returned a error popup stating the API Throttling.
+
+## Error Handling
+Below errors are handled explcitly in the project
+
+403: API Rate Limit Error
+-1002: Unsupported URL
+-1009: Network offline
