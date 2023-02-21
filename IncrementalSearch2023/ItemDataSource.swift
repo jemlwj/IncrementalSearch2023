@@ -10,9 +10,22 @@ import UIKit
 import Combine
 
 class ItemDataSource: NSObject {
+    //For API Throttling
+    static var lastAPICall = Date(timeIntervalSince1970: 0)
+    
+    //only one instance is required
     private static let BASE_URL = "https://api.github.com/search/repositories?"
     
     func loadList(query: String, page: Int? = nil, completion: @escaping (([Item]) -> Void), failure: @escaping (String) -> Void) -> AnyCancellable? {
+
+        //Throttle the request to only be able make one every 5 seconds.
+        //Any request made within the window will be thrown an alert pop-up
+        if (Date().timeIntervalSince(Self.lastAPICall)) < 5 {
+            failure("Due to API call rate limiting, the web request can only be made every 5 seconds. Please try again later")
+            return nil
+        }
+        //Mark the last API call timing
+        Self.lastAPICall = Date()
 
         //build the URL
         let url = buildRequestURL(query: query, page: page)
