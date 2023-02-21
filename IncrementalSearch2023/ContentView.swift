@@ -18,6 +18,21 @@ struct ContentView: View {
 
     @State private var page = 0
     
+    @State private var isShowThrottleAlert: Bool = false
+    
+    @State private var errorMsg = ""
+    
+    private var throttleAlert: Alert {
+        get {
+            Alert(
+                title: Text(""),
+                message: Text(self.errorMsg),
+                dismissButton: .default(Text("OK"),   
+                                        action: { self.isShowThrottleAlert = false })
+            )
+        }
+    }
+    
     private let itemDataSource: ItemDataSource = ItemDataSource()
     
     var body: some View {
@@ -36,9 +51,15 @@ struct ContentView: View {
                     //run the API and retrieve the first page
                     self.cancellable = self.itemDataSource.loadList(query: self.query, completion: { items in
                         self.array.append(contentsOf: items)
-                    })
+                    }, failure: { message in
+                        self.errorMsg = message
+                        self.isShowThrottleAlert = true
+                        })
                 }
             )
+                .alert(isPresented:$isShowThrottleAlert) {
+                    throttleAlert
+                }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             
@@ -57,8 +78,13 @@ struct ContentView: View {
                         //request data for the next page
                         self.cancellable = self.itemDataSource.loadList(query: self.query, page: self.page, completion: { items in
                             self.array.append(contentsOf: items)
+                        }, failure: { message in
+                            self.isShowThrottleAlert = true
                         })
                     }
+                }
+                .alert(isPresented:self.$isShowThrottleAlert) {
+                    self.throttleAlert
                 }
             }
         }

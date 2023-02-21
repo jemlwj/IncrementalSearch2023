@@ -12,7 +12,7 @@ import Combine
 class ItemDataSource: NSObject {
     private static let BASE_URL = "https://api.github.com/search/repositories?"
     
-    func loadList(query: String, page: Int? = nil, completion: @escaping (([Item]) -> Void)) -> AnyCancellable? {
+    func loadList(query: String, page: Int? = nil, completion: @escaping (([Item]) -> Void), failure: @escaping (String) -> Void) -> AnyCancellable? {
 
         //build the URL
         let url = buildRequestURL(query: query, page: page)
@@ -52,14 +52,18 @@ class ItemDataSource: NSObject {
                         switch error.errorCode {
                             case 403:
                                 //Code=403 "API rate limit exceeded"
+                                failure("API rate limit exceeded")
                             break
                             case -1002:
                                 //Code=-1002 "unsupported URL"
+                                failure("unsupported URL")
                                 break
                             case -1009:
                                 //Code=-1009 "The Internet connection appears to be offline."
+                                failure("The Internet connection appears to be offline.")
                                 break
                             default:
+                                failure("Unknown")
                                 break
                         }
                         break
