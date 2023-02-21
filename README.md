@@ -18,3 +18,6 @@ Unit Test of the model and the data source class is also implemented.
 
 As the GitHub API limits requests from non-authenticated source to 10 per every minute, the rate of API requests is limited.
 This will be caught as an error within API Request call.
+
+However, the app will handle this by not allowing the web request to be called within a 5-second window.
+Any additional API requests within the 5-second window will be returned a error popup stating the API Throttling.
