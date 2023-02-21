@@ -19,9 +19,9 @@ struct ContentView: View {
     @State private var page = 0
     
     @State private var isShowThrottleAlert: Bool = false
-    
     @State private var errorMsg = ""
     
+    //Alert popup for API Error
     private var throttleAlert: Alert {
         get {
             Alert(

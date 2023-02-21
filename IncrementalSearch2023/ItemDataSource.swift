@@ -31,6 +31,7 @@ class ItemDataSource: NSObject {
         let url = buildRequestURL(query: query, page: page)
         let request = URLRequest(url: url)
 
+        //Start the Web request
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { (data, response) -> Result<RepositoryModel, Error> in
                 // Able to decode response data properly
@@ -45,6 +46,7 @@ class ItemDataSource: NSObject {
                                 //Success yet unable to decode properly. Check the model class
                                 throw URLError.init(.badServerResponse)
                             case 403:
+                                //Handle the API rate limit. Just in case it falls through the API Throttling
                                 throw URLError.init(URLError.Code(rawValue: 403), userInfo: ["message": "API rate limit exceeded"])
                             default:
                                 break
